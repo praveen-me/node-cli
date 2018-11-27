@@ -1,13 +1,33 @@
 const readline = require('readline');
+const https = require('https');
 
-const rl = readline.createInterface({
-  input: process.stdin,
-  output: process.stdout
-});
+let username;
 
-rl.question('What do you think of Node.js? ', (answer) => {
-  // TODO: Log the answer in a database
-  console.log(`Thank you for your valuable feedback: ${answer}`);
+const line = readline.createInterface({
+  input : process.stdin,
+  output : process.stdout
+})
 
-  rl.close();
-});
+let data = '';
+
+line.question('Enter you github username? ', (user) => {
+  https.get({
+    host: 'api.github.com',
+    path: '/users/' + user,
+    method: 'GET',
+    headers: {'user-agent': 'node.js'}
+  }, (res) => {
+    console.log(res.statusCode);
+    res.on('data', (d) => {
+      data = data + d;
+    })
+    res.on('end', () => {
+      data = JSON.parse(data);
+      console.log(`Name -----------------> \x1b[31m ${data.name} `);
+      console.log(`Public Repos -----------------> ${data.public_repos}`);
+      console.log(`Followers -----------------> ${data.followers}`);
+      })
+  })
+})
+
+

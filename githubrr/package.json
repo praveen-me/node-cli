@@ -1,5 +1,8 @@
 {
   "name": "githubrr",
+  "bin": {
+    "githubrr": "./cli.js"
+  },
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -9,5 +12,10 @@
   },
   "keywords": [],
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "chalk": "^2.4.1",
+    "elegant-spinner": "^1.0.1",
+    "log-update": "^2.3.0"
+  }
 }

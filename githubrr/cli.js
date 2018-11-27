@@ -58,9 +58,15 @@ line1.question(
                 userData = userData + d;
               })
               res.on('end', () => {
-                let data;
-                data = JSON.parse(userData);
-                console.log(data)
+                userData = JSON.parse(userData);
+
+                // Showing User Data
+                console.log(`\n${chalk.rgb(4, 114, 202).bold(`${userData.name}`)}(${chalk.rgb(4, 114, 202).bold(`${userData.login}`)})`);
+                console.log(`${chalk.rgb(255, 193, 7).bold(`${userData.bio}`)}`);
+                console.log(`\n${chalk.rgb(255, 152, 0).bold('Repositories')}\t\t\t::\t${chalk.magenta.bold(`${userData.public_repos}`)}`);
+                console.log(`\n${chalk.rgb(255, 152, 0).bold('Followers')}\t\t\t::\t${chalk.magenta.bold(`${userData.followers}`)}`);
+                console.log(`\n${chalk.rgb(255, 152, 0).bold('Following')}\t\t\t::\t${chalk.magenta.bold(`${userData.following}`)}`);
+
                 })
             })
           })

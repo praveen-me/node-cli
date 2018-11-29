@@ -5,6 +5,5 @@ With this cli you can take github data of any user from github api. And this cli
 
 ## How to run this project locally:-
 * Clone this whole repo `git clone https://github.com/praveen-me/node-cli.git`.
-* 
-Go this directory using `cd node-cli/githubrr`.
+* Go this directory using `cd node-cli/githubrr`.
 * Then use `npm start` to start the project locally.
